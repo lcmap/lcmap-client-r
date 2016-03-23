@@ -11,6 +11,6 @@ login <- function (username, password, version) {
     if (missing(version)) {
         version<-lcmap::defaultAPIVersion
     }
-    result<-lcmap::post(lcmap::routes$loginContext, version))
+    result<-lcmap::post(lcmap::routes$loginContext, version)
     return(jsonlite::fromJSON(result$body))
 }
