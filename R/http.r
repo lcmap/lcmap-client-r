@@ -34,9 +34,8 @@ formatAccept <- function(version, contentType) {
 }
 
 request <- function(method, path, ...) {
-    func<-sprintf("httr::%s", method)
     url<-sprintf("%s%s", getCfg()$endpoint, path)
-    do.call(getFromNamespace(func, "httr"), list(url, ...))
+    do.call(getFromNamespace(method, "httr"), list(url, ...))
 }
 
 get <- function(path, ...) {
