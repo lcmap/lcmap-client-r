@@ -29,5 +29,5 @@ getIni<-function (filename) {
 #' getCfg("custom/loc/lcmap.ini")
 getCfg<-function (filename) {
     clientIniData<-getIni(filename)
-    return(hash(keys=clientIniData[,"name"], values=clientIniData[,"value"]))
+    return(hash::hash(keys=clientIniData[,"name"], values=clientIniData[,"value"]))
 }
