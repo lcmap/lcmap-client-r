@@ -1,4 +1,3 @@
-defaultEndpoint = "http://"
 clientVendor = "vnd.usgs.lcmap"
 projectUrl = "https://github.com/oubiwann/lcmap-client-r"
 mediaTypePrefix = "application"
@@ -33,23 +32,27 @@ formatAccept <- function(version, contentType) {
     return(accept)
 }
 
-request <- function(method, path, ...) {
+request <- function(method, path, version, ...) {
+
     url<-sprintf("%s%s", getCfg()$endpoint, path)
-    do.call(getFromNamespace(method, "httr"), list(url, ...))
+    do.call(getFromNamespace(method, "httr"),
+            list(url, httr::add_headers("User-Agent"=lcmap::formatUserAgent(),
+                                        "Accept"=lcmap::formatAccept(version)),
+            ...))
 }
 
-get <- function(path, ...) {
-    request("GET", path, ...)
+get <- function(path, version, ...) {
+    request("GET", path, version, ...)
 }
 
-post <- function(path, ...) {
-    request("POST", path, ...)
+post <- function(path, version, ...) {
+    request("POST", path, version, ...)
 }
 
-put <- function(path, ...) {
-    request("PUT", path, ...)
+put <- function(path, version, ...) {
+    request("PUT", path, version, ...)
 }
 
-delete <- function(path, ...) {
-    request("DELETE", path, ...)
+delete <- function(path, version, ...) {
+    request("DELETE", path, version, ...)
 }

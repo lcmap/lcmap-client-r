@@ -11,8 +11,6 @@ login <- function (username, password, version) {
     if (missing(version)) {
         version<-lcmap::defaultAPIVersion
     }
-    result<-lcmap::get(lcmap::routes$loginContext,
-                       httr::add_headers("User-Agent"=lcmap::formatUserAgent(),
-                                         "Accept"=lcmap::formatAccept(version)))
-    return(jsonlite::fromJSON(result))
+    result<-lcmap::post(lcmap::routes$loginContext, version))
+    return(jsonlite::fromJSON(result$body))
 }
