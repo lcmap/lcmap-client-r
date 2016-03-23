@@ -1,11 +1,11 @@
 PROJECT = lcmap
-_R_CHECK_FORCE_SUGGESTS_ = 0
+CHECK_SUGGESTS = FALSE
 
 deps:
-	Rscript dev/install-packages.r
+	Rscript dev/install-deps.r
 
 check:
-	cd ../ && R CMD check $(PROJECT)
+	cd ../ && _R_CHECK_FORCE_SUGGESTS_=$(CHECK_SUGGESTS) R CMD check $(PROJECT)
 
 local-install:
-	cd ../ && R CMD install -d $(PROJECT)
+	Rscript dev/install-client.r
