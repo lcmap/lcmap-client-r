@@ -2,8 +2,8 @@
 #'
 #' @name lcmap
 #' @docType package
-clientVersion<-0.0.1
-defaultAPIVersion<-0.0
+clientVersion<-"0.0.1"
+defaultAPIVersion<-"0.0"
 
 routes<-hash::hash(baseContext="/api",
                    authContext="/api/auth",
