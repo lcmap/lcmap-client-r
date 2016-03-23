@@ -1,0 +1,15 @@
+Package: lcmap
+Title: LCMAP REST Service R Client
+Version: 0.0.0.9000
+Authors@R: person("Duncan", "McGreggor", email = "oubiwann@gmail.com", role = c("aut", "cre"))
+Author: Duncan McGreggor [aut, cre]
+Maintainer: Duncan McGreggor <oubiwann@gmail.com>
+Description: This is an R programming language HTTP client for the REST service
+  of the Land Change Monitoring Assessment and Projection (LCMAP) initiative
+  from USGS-EROS.
+Depends: R (>= 3.1.2)
+Imports: httr, raster, rgdal
+Suggests: rgeos, ncdf4
+License: NASA Open Source Agreement Version 1.3 + file LICENSE
+BugReports: https://github.com/oubiwann/lcmap-R
+LazyData: true
