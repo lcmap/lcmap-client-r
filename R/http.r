@@ -23,9 +23,13 @@ formatUserAgent <- function() {
 #' @export
 #' @examples
 #' formatAccept("vnd.some.one", "2.0", "text/xml")
-formatAccept <- function(vendor, version, contentType) {
-    mediaType<-strsplit(contentType, "/")[[1]]
-    accept<-sprintf("%s/%s.v%s+%s", mediaType[1], vendor, version, mediaType[2])
+formatAccept <- function(version, contentType) {
+    if (missing(contentType)) {
+        mediaType<-c(mediaTypePrefix, mediaTypeSuffix)
+    } else {
+        mediaType<-strsplit(contentType, "/")[[1]]
+    }
+    accept<-sprintf("%s/%s.v%s+%s", mediaType[1], clientVendor, version, mediaType[2])
     return(accept)
 }
 
