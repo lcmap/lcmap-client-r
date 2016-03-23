@@ -2,14 +2,17 @@
 #'
 #' @param username username
 #' @param password password
+#' @param version version
 #' @export
-#' @family config
 #' @examples
-#' GET("http://httpbin.org/basic-auth/user/passwd")
-#' GET("http://httpbin.org/basic-auth/user/passwd",
-#'   authenticate("alice", "secret"))
-auth <- function(user, password) {
-  stopifnot(is.character(user), length(user) == 1)
-  stopifnot(is.character(password), length(password) == 1)
-  stopifnot(is.character(type), length(type) == 1)
+#' login("alice", "secret")
+#' login("alice", "secret", "2.0")
+login <- function (username, password, version) {
+    if missing(version) {
+        version<-lcmap::defaultAPIVersion
+    }
+    result<-lcmap::get(lcmap::routes$loginContext,
+                       httr::add_header("User-Agent", lcmap::formatUserAgent()),
+                       httr::add_header("Accept", lcmap::formatAccpt(version)))
+    return(jsonlite::fromJSON(result))
 }
