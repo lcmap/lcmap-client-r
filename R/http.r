@@ -32,13 +32,22 @@ formatAccept <- function(version, contentType) {
     return(accept)
 }
 
-request <- function(method, path, version, ...) {
+parseResult <- function(contentType, result) {
+    # XXX as soon as content-type is set properly by the server, the client
+    #     will be able to disaptch the appropriate parser
+    return(jsonlite::fromJSON(result))
+}
 
+request <- function(method, path, version, ...) {
     url<-sprintf("%s%s", getCfg()$endpoint, path)
-    do.call(getFromNamespace(method, "httr"),
-            list(url, httr::add_headers("User-Agent"=lcmap::formatUserAgent(),
-                                        "Accept"=lcmap::formatAccept(version)),
-            ...))
+    func<-getFromNamespace(method, "httr")
+    args<-list(url, httr::add_headers("User-Agent"=lcmap::formatUserAgent(),
+                                      "Accept"=lcmap::formatAccept(version)),
+               ...)
+    response<-do.call(func, args)
+    textResult<-httr::content(response, as="text")
+    contentType<-httr::headers(response)$`content-type`
+    return(parseResult(contentType, textResult))
 }
 
 get <- function(path, version, ...) {
