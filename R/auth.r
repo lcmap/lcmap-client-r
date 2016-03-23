@@ -12,7 +12,7 @@ login <- function (username, password, version) {
         version<-lcmap::defaultAPIVersion
     }
     result<-lcmap::get(lcmap::routes$loginContext,
-                       httr::add_header("User-Agent", lcmap::formatUserAgent()),
-                       httr::add_header("Accept", lcmap::formatAccpt(version)))
+                       httr::add_headers("User-Agent"=lcmap::formatUserAgent(),
+                                         "Accept"=lcmap::formatAccpt(version)))
     return(jsonlite::fromJSON(result))
 }
