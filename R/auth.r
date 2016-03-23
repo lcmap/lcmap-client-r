@@ -8,7 +8,7 @@
 #' login("alice", "secret")
 #' login("alice", "secret", "2.0")
 login <- function (username, password, version) {
-    if missing(version) {
+    if (missing(version)) {
         version<-lcmap::defaultAPIVersion
     }
     result<-lcmap::get(lcmap::routes$loginContext,
