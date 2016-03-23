@@ -35,7 +35,7 @@ formatAccept <- function(version, contentType) {
 
 request <- function(method, path, ...) {
     func<-sprintf("httr::%s", method)
-    url<-sprintf("%s%s", getCfg$endpoint, path)
+    url<-sprintf("%s%s", getCfg()$endpoint, path)
     do.call(func, list(url, ...))
 }
 
