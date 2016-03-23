@@ -18,3 +18,16 @@ getIni<-function (filename) {
     matches<-c(which(outer(iniData[,"section"], clientSection, "==")), arr.ind=TRUE)
     return(iniData[1:nrow(iniData) %in% matches, ])
 }
+
+#' Get the LCMAP client configuration as a hashmap
+#'
+#' @param filename filename
+#' @export
+#' @family config
+#' @examples
+#' getCfg()
+#' getCfg("custom/loc/lcmap.ini")
+getCfg<-function (filename) {
+    clientIniData<-getIni(filename)
+    return(hash(keys=clientIniData[,"name"], values=clientIniData[,"value"]))
+}
