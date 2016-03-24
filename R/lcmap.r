@@ -15,4 +15,6 @@ routes<-hash::hash(baseContext="/api",
                    modelsContext="/api/models",
                    eventsContext="/api/events",
                    systemContext="/api/system",
+                   jsonStatusContext="/api/system/json-status",
+                   xmlStatysContext="/api/system/status",
                    usersContext="/api/users")
