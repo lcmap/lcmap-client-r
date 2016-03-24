@@ -28,7 +28,8 @@ formatAccept <- function(version, contentType) {
     } else {
         mediaType<-strsplit(contentType, "/")[[1]]
     }
-    accept<-sprintf("%s/%s.v%s+%s", mediaType[1], clientVendor, version, mediaType[2])
+    accept<-sprintf("%s/%s.v%s+%s", mediaType[1], clientVendor, version,
+                    mediaType[2])
     return(accept)
 }
 

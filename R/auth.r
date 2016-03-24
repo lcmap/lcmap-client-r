@@ -13,6 +13,7 @@ login <- function (username, password, version) {
     }
     cfg<-lcmap::getCfg()
     payload<-list(username=cfg$username, password=cfg$password)
-    result<-lcmap::post(lcmap::routes$loginContext, version, body=payload, encode="form")
+    result<-lcmap::post(lcmap::routes$loginContext, version, body=payload,
+                        encode="form")
     return(result)
 }
