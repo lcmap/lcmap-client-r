@@ -10,13 +10,11 @@ formatAccept(version, contentType)
 \item{version}{version}
 
 \item{contentType}{contentType}
-
-\item{vendor}{vendor}
 }
 \description{
 Format the data for the 'Accept' header
 }
 \examples{
-formatAccept("vnd.some.one", "2.0", "text/xml")
+formatAccept("2.0", "text/xml")
 }
 

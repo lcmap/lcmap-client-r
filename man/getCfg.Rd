@@ -14,7 +14,7 @@ Get the LCMAP client configuration as a hashmap
 }
 \examples{
 getCfg()
-getCfg("custom/loc/lcmap.ini")
+getCfg("~/.usgs/lcmap.ini")
 }
 \seealso{
 Other config: \code{\link{getIni}}

@@ -8,15 +8,13 @@ getIni(filename)
 }
 \arguments{
 \item{filename}{filename}
-
-\item{password}{password}
 }
 \description{
 Read the LCMAP client configuration file
 }
 \examples{
 getIni()
-getIni("custom/loc/lcmap.ini")
+getIni("~/.usgs/lcmap.ini")
 }
 \seealso{
 Other config: \code{\link{getCfg}}
