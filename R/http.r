@@ -16,12 +16,11 @@ formatUserAgent <- function() {
 
 #' Format the data for the 'Accept' header
 #'
-#' @param vendor vendor
 #' @param version version
 #' @param contentType contentType
 #' @export
 #' @examples
-#' formatAccept("vnd.some.one", "2.0", "text/xml")
+#' formatAccept("2.0", "text/xml")
 formatAccept <- function(version, contentType) {
     if (missing(contentType)) {
         mediaType<-c(mediaTypePrefix, mediaTypeSuffix)
@@ -39,6 +38,7 @@ parseResult <- function(contentType, result) {
     return(jsonlite::fromJSON(result))
 }
 
+#' @export
 request <- function(method, path, version, ...) {
     url<-sprintf("%s%s", getCfg()$endpoint, path)
     func<-getFromNamespace(method, "httr")
@@ -51,18 +51,22 @@ request <- function(method, path, version, ...) {
     return(parseResult(contentType, textResult))
 }
 
+#' @export
 get <- function(path, version, ...) {
     request("GET", path, version, ...)
 }
 
+#' @export
 post <- function(path, version, ...) {
     request("POST", path, version, ...)
 }
 
+#' @export
 put <- function(path, version, ...) {
     request("PUT", path, version, ...)
 }
 
+#' @export
 delete <- function(path, version, ...) {
     request("DELETE", path, version, ...)
 }

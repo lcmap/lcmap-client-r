@@ -4,12 +4,11 @@ clientSection<-"LCMAP Client"
 #' Read the LCMAP client configuration file
 #'
 #' @param filename filename
-#' @param password password
 #' @export
 #' @family config
 #' @examples
 #' getIni()
-#' getIni("custom/loc/lcmap.ini")
+#' getIni("~/.usgs/lcmap.ini")
 getIni<-function (filename) {
     if (missing(filename)) {
         filename<-clientConfigFile
@@ -27,7 +26,7 @@ getIni<-function (filename) {
 #' @family config
 #' @examples
 #' getCfg()
-#' getCfg("custom/loc/lcmap.ini")
+#' getCfg("~/.usgs/lcmap.ini")
 getCfg<-function (filename) {
     clientIniData<-getIni(filename)
     return(hash::hash(keys=clientIniData[,"name"],

@@ -2,9 +2,14 @@
 #'
 #' @name lcmap
 #' @docType package
+
+#' @export
 clientVersion<-"0.0.0.9000"
+
+#' @export
 defaultAPIVersion<-"0.0"
 
+#' @export
 routes<-hash::hash(baseContext="/api",
                    authContext="/api/auth",
                    loginContext="/api/auth/login",
