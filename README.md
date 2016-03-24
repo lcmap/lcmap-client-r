@@ -33,9 +33,12 @@ devtools::install_github("oubiwann/lcmap-client-r")
 For more information on installing R packages from Git/Github, see:
  * http://r-pkgs.had.co.nz/git.html
 
+Quick usage example (see docs for more):
 
 ```r
-TBD
+> result<-lcmap::system.getJSONStatus()
+> result$status$jvm$memory$free
+[1] "1949915672"
 ```
 
 
