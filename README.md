@@ -44,6 +44,6 @@ Quick usage example (see docs for more):
 
 ## License
 
-Copyright © 2015 United States Government
+Copyright © 2016 United States Government
 
 NASA Open Source Agreement, Version 1.3.
